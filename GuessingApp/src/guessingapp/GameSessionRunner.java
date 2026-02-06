@@ -2,30 +2,28 @@ package guessingapp;
 
 import java.util.Scanner;
 
-public class GuessingApp {
+public class GameSessionRunner {
 
     public static void main(String[] args) {
-
-        System.out.println("🎯 Welcome to the Guessing App");
 
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Enter Player Name: ");
         String playerName = scanner.nextLine();
 
+        // Run original game
         GameConfig config = new GameConfig();
         config.showRules();
 
         int attempts = 0;
         int hintsUsed = 0;
-        boolean win = false;   // ✅ UC5 flag
+        boolean win = false;
 
         while (attempts < config.getMaxAttempts()) {
 
             System.out.print("Enter your guess: ");
 
-            try
-            {
+            try {
                 int guess = ValidationService.validateInput(scanner.nextLine());
                 attempts++;
 
@@ -36,8 +34,7 @@ public class GuessingApp {
 
                 System.out.println(result);
 
-                if (!"CORRECT".equals(result) && hintsUsed < config.getMaxHints())
-                {
+                if (!"CORRECT".equals(result) && hintsUsed < config.getMaxHints()) {
                     hintsUsed++;
                     System.out.println(
                             HintService.generateHint(
@@ -48,7 +45,7 @@ public class GuessingApp {
                 }
 
                 if ("CORRECT".equals(result)) {
-                    win = true;   // ✅ mark win
+                    win = true;
                     System.out.println("🎉 You guessed the number in " + attempts + " attempts!");
                     break;
                 }
@@ -62,12 +59,11 @@ public class GuessingApp {
             System.out.println("❌ Game Over! Target number was: " + config.getTargetNumber());
         }
 
-        // ================= UC5 INTEGRATION =================
+        // ✅ UC5 – Persist result
         GameResult gameResult =
                 new GameResult(playerName, attempts, win);
 
         StorageService.save(gameResult);
-        // ===================================================
 
         scanner.close();
     }

@@ -225,16 +225,72 @@ Ensure safe and validated user inputs throughout the game without crashing the a
 • Easier debugging
 • Production-ready behavior
 
+------------------------------------------------------------------------------------
+
+🎮 UC5 – Game Result Storage (Persistence)
+
+🎯 Goal
+
+Store and retrieve game results after each game session for future reference.
+
+👥 Actors
+
+• Player
+• StorageService
+
+🔑 Key Requirements
+
+• Capture player name
+• Record number of attempts
+• Store game result (WIN / LOSE)
+• Persist game data after game completion
+• Ensure data is stored safely without data loss
+• Append new records without overwriting old ones
+
+🧠 Key Concepts
+
+• File I/O (BufferedWriter / FileWriter)
+• Object persistence
+• Separation of concerns
+• Try-with-resources
+• Append mode file handling
+• Data integrity
+
+🔄 Flow
+
+1. Game ends (Win / Lose)
+
+2. Player details are collected
+
+3. Game result object is created
+
+4. StorageService writes data to file
+
+5. Storage confirmation is displayed
+
+📤 Output Format (Stored Record)
+--------------------------------------------------------------------------------------------------
+
+Player name : Prabhu, Attempts : 4, Result : WIN, 2026-02-06T17:20:44.881
+
+
 📂 Project Structure
+-----------------------
+
 guessing-app/
 │
 └── guessingapp/
-├── GuessingApp.java        // Main controller
-├── GameConfig.java        // Game configuration (UC1)
-├── GuessValidator.java    // Guess comparison logic (UC2)
-├── HintService.java       // Hint generation logic (UC3)
-├── ValidationService.java // Input validation (UC4)
-└── InvalidInputException.java // Custom exception (UC4)
+├── GuessingApp.java         // Main controller (UC1–UC5)
+├── GameConfig.java          // Game configuration (UC1)
+├── GuessValidator.java     // Guess comparison logic (UC2)
+├── HintService.java        // Hint generation logic (UC3)
+├── ValidationService.java  // Input validation (UC4)
+├── InvalidInputException.java // Custom exception (UC4)
+├── GameResult.java         // Game result model (UC5)
+├── StorageService.java     // File persistence logic (UC5)
+│
+└── game_results.txt        // Stored game history (auto-generated)
+
 
 
 --------------------------------------------------
@@ -247,12 +303,13 @@ guessing-app/
 • No replay support
 --------------------------------------------------
 
-✅ Current Status
+✅ Updated Current Status
 
 ✔ UC1 – Game Initialization implemented
 ✔ UC2 – User Guess Submission implemented
 ✔ UC3 – Hint Generation implemented
 ✔ UC4 – Error Handling & Validation implemented
+✔ UC5 – Game Result Storage implemented
 
 --------------------------------------------------
 

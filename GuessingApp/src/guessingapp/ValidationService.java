@@ -3,10 +3,12 @@ package guessingapp;
 /**
  * Handles validation of user input before game logic.
  */
-public class ValidationService {
+public class ValidationService
+{
 
     public static int validateInput(String input)
-            throws InvalidInputException {
+            throws InvalidInputException
+    {
 
         try {
             int value = Integer.parseInt(input);

@@ -20,11 +20,13 @@ public class GameConfig
         this.targetNumber = new Random().nextInt(MAX - MIN + 1) + MIN;
     }
 
-    public int getTargetNumber() {
+    public int getTargetNumber()
+    {
         return targetNumber;
     }
 
-    public int getMaxAttempts() {
+    public int getMaxAttempts()
+    {
         return MAX_ATTEMPTS;
     }
 

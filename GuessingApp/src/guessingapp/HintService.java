@@ -22,7 +22,8 @@ public class HintService {
     public static String generateHint(int target, int hintCount)
     {
 
-        if (hintCount == 1) {
+        if (hintCount == 1)
+        {
             return (target % 2 == 0)
                     ? "Hint: Number is EVEN"
                     : "Hint: Number is ODD";
