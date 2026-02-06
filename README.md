@@ -1,5 +1,4 @@
 🎯 Guessing App – Java Console Application
-
 📌 Overview
 
 The Guessing App is a console-based Number Guessing Game developed as a hands-on learning project to master core Java programming concepts.
@@ -8,34 +7,37 @@ This application helps learners understand how Java syntax, data types, control 
 
 The project emphasizes:
 
-• Problem-solving skills  
-• Interactive user experience  
-• Incremental logic building  
+• Problem-solving skills
+• Interactive user experience
+• Incremental logic building
 • Clean, readable, and extensible code design
 
 --------------------------------------------------
 
 🎯 Objective
 
-• Initialize the guessing game with required configurations  
-• Allow the player to submit guesses  
-• Validate input and provide real-time feedback  
-• Provide controlled hints after incorrect guesses  
-• Ensure predictable and controlled game behavior
+• Initialize the guessing game with required configurations
+• Allow the player to submit guesses
+• Validate input and provide real-time feedback
+• Provide controlled hints after incorrect guesses
+• Persist game results for future reference
+• Allow safe restart or graceful exit
 
 --------------------------------------------------
 
 🧠 Concepts Covered
 
-• Primitive Data Types  
-• Scanner Input Handling  
-• Random Number Generation  
-• Control Flow (if-else, loops)  
-• Constructor Initialization  
-• Encapsulation (private fields)  
-• Constants using final keyword  
-• Method Invocation  
+• Primitive Data Types
+• Scanner Input Handling
+• Random Number Generation
+• Control Flow (if-else, loops)
+• Constructor Initialization
+• Encapsulation (private fields)
+• Constants using final keyword
+• Method Invocation
 • Separation of Concerns (OOPS)
+• File I/O
+• Application lifecycle handling
 
 --------------------------------------------------
 
@@ -273,35 +275,73 @@ Store and retrieve game results after each game session for future reference.
 
 Player name : Prabhu, Attempts : 4, Result : WIN, 2026-02-06T17:20:44.881
 
+-----------------------------------------------------------------------------------------------------------
+
+🎮 UC6 – Game Restart & Exit
+🎯 Goal
+
+Allow the player to safely restart the game or exit the application after a game session ends.
+
+----------------------------------------------------------------------------------------------------------------------
 
 📂 Project Structure
 -----------------------
-
 guessing-app/
 │
 └── guessingapp/
-├── GuessingApp.java         // Main controller (UC1–UC5)
-├── GameConfig.java          // Game configuration (UC1)
-├── GuessValidator.java     // Guess comparison logic (UC2)
-├── HintService.java        // Hint generation logic (UC3)
-├── ValidationService.java  // Input validation (UC4)
-├── InvalidInputException.java // Custom exception (UC4)
-├── GameResult.java         // Game result model (UC5)
-├── StorageService.java     // File persistence logic (UC5)
+├── GuessingApp.java          // Main controller (UC1–UC6)
+├── GameConfig.java           // Game configuration (UC1)
+├── GuessValidator.java       // Guess comparison logic (UC2)
+├── HintService.java          // Hint generation logic (UC3)
+├── ValidationService.java    // Input validation (UC4)
+├── InvalidInputException.java// Custom exception (UC4)
+├── GameResult.java           // Game result model (UC5)
+├── StorageService.java       // File persistence logic (UC5)
 │
-└── game_results.txt        // Stored game history (auto-generated)
+└── game_results.txt              // Stored game history (auto-generated)
 
+-------------------------------------------------------------------------------------------------------------------------------
 
+🔑 Key Requirements
 
---------------------------------------------------
+• Prompt the user to restart or exit after each game
+• Reset all game variables on restart
+• Preserve previously stored game results
+• Close resources safely on exit
+• Display a friendly exit message
 
-⚠⚠️ Drawbacks of Previous Approach
+----------------------------------------------------------------------------
 
-• No hints → frustrating user experience
-• Unhandled input → runtime crashes
-• Hardcoded logic
-• No replay support
---------------------------------------------------
+🧠 Key Concepts
+
+• Loop control (do-while)
+• Boolean flags
+• Resource cleanup
+• Application lifecycle management
+• User-driven flow control
+
+--------------------------------------------------------------------------------------------------
+
+🔄 Flow
+
+1. Game ends (Win / Lose)
+
+2. Result is stored using UC5
+
+3. User is prompted: Play again? (yes/no)
+
+4. Yes → New game session starts
+
+5. No → Resources are closed and application exits gracefully
+
+-------------------------------------------------------------------------------------------------
+
+📤 Output
+
+• Restart confirmation → New game begins
+• Exit message → Application terminates safely
+
+--------------------------------------------------------------------------------------------
 
 ✅ Updated Current Status
 
@@ -310,10 +350,13 @@ guessing-app/
 ✔ UC3 – Hint Generation implemented
 ✔ UC4 – Error Handling & Validation implemented
 ✔ UC5 – Game Result Storage implemented
+✔ UC6 – Game Restart & Exit implemented
 
 --------------------------------------------------
 
-👨‍💻 Author
+👥 Actors
 
-Prabhu  
-Java Learning Project
+• Player
+• Game Controller (GuessingApp)
+
+--------------------------------------------------

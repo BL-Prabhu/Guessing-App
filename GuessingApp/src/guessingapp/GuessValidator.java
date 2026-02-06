@@ -17,7 +17,8 @@ public class GuessValidator
         if (guess == target)
         {
             return "correct";
-        } else if (guess < target)
+        }
+        else if (guess < target)
         {
             return "high";
         }

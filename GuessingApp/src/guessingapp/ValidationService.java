@@ -10,7 +10,8 @@ public class ValidationService
             throws InvalidInputException
     {
 
-        try {
+        try
+        {
             int value = Integer.parseInt(input);
 
             if (value < 1 || value > 100) {
@@ -21,7 +22,8 @@ public class ValidationService
 
             return value;
 
-        } catch (NumberFormatException e) {
+        }
+        catch (NumberFormatException e) {
             throw new InvalidInputException(
                     "Invalid input. Please enter numbers only."
             );
