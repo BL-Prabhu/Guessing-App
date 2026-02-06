@@ -10,7 +10,8 @@ import java.util.Random;
  * - Generating target number
  * - Displaying rules
  */
-public class GameConfig {
+public class GameConfig
+{
 
     private static final int MIN_RANGE = 1;
     private static final int MAX_RANGE = 100;

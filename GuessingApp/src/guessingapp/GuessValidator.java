@@ -8,11 +8,13 @@ package guessingapp;
  *
  * No input or output handled here.
  */
-public class GuessValidator {
+public class GuessValidator
+{
 
     public static String validateGuess(int guess, int target) {
 
-        if (guess == target) {
+        if (guess == target)
+        {
             return "correct";
         } else if (guess < target) {
             return "high";

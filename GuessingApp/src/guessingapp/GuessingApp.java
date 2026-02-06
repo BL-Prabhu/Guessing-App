@@ -12,7 +12,7 @@ import java.util.Scanner;
  * 4. Stop when game ends
  *
  * @author Prabhu
- * @version 2.0
+ * @version 3.0
  */
 public class GuessingApp {
 
@@ -25,6 +25,7 @@ public class GuessingApp {
 
         Scanner scanner = new Scanner(System.in);
         int attempts = 0;
+        int hintCount = 0;
 
         /*
          * Game loop runs until the player
@@ -47,11 +48,23 @@ public class GuessingApp {
                     config.getTargetNumber()
             );
 
-            System.out.println(result);
+            System.out.println(result.toUpperCase());
 
-            if (result.equals("correct")) {
+            if (result.equals("correct"))
+            {
                 break;
             }
+            else
+            {
+                hintCount++;
+                System.out.println(
+                        HintService.generateHint(
+                                config.getTargetNumber(),
+                                hintCount
+                        )
+                );
+            }
+
         }
 
         scanner.close();
