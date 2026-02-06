@@ -19,7 +19,8 @@ public class HintService {
      * @param hintCount number of hints already used
      * @return hint message
      */
-    public static String generateHint(int target, int hintCount) {
+    public static String generateHint(int target, int hintCount)
+    {
 
         if (hintCount == 1) {
             return (target % 2 == 0)

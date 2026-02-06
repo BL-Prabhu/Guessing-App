@@ -174,31 +174,85 @@ Provide helpful and controlled hints to guide the player toward the correct answ
 
 --------------------------------------------------
 
-📂 Project Structure
+🎮 UC4 – Error Handling & Validation
+🎯 Goal
 
+Ensure safe and validated user inputs throughout the game without crashing the application.
+
+👥 Actors
+
+• Player
+• ValidationService
+
+🔑 Key Requirements
+
+• Handle non-numeric input
+• Prevent out-of-range guesses
+• Display user-friendly error messages
+• Prevent application crashes
+• Log and track invalid attempts
+
+🧠 Key Concepts
+
+• Exception handling (try-catch)
+• Custom exceptions
+• Input sanitization
+• Fail-fast approach
+• Separation of validation logic
+
+🔄 Flow
+
+1. Player enters input
+
+2. Input is passed to ValidationService
+
+3. Invalid input throws custom exception
+
+4. Error message is displayed
+
+5. Game continues safely
+
+📤 Output
+
+• Error message → Invalid input
+• Accepted input → Game continues
+
+⭐ Key Benefits
+
+• Robust and crash-free execution
+• Better user guidance
+• Cleaner main game logic
+• Easier debugging
+• Production-ready behavior
+
+📂 Project Structure
 guessing-app/
 │
 └── guessingapp/
-├── GuessingApp.java        // Main controller (Game flow)
+├── GuessingApp.java        // Main controller
 ├── GameConfig.java        // Game configuration (UC1)
 ├── GuessValidator.java    // Guess comparison logic (UC2)
-└── HintService.java       // Hint generation logic (UC3)
+├── HintService.java       // Hint generation logic (UC3)
+├── ValidationService.java // Input validation (UC4)
+└── InvalidInputException.java // Custom exception (UC4)
+
 
 --------------------------------------------------
 
-⚠️ Drawbacks of Previous Approach
+⚠⚠️ Drawbacks of Previous Approach
 
-• No hints → frustrating user experience  
-• Hardcoded logic  
+• No hints → frustrating user experience
+• Unhandled input → runtime crashes
+• Hardcoded logic
 • No replay support
-
 --------------------------------------------------
 
 ✅ Current Status
 
-✔ UC1 – Game Initialization implemented  
-✔ UC2 – User Guess Submission implemented  
+✔ UC1 – Game Initialization implemented
+✔ UC2 – User Guess Submission implemented
 ✔ UC3 – Hint Generation implemented
+✔ UC4 – Error Handling & Validation implemented
 
 --------------------------------------------------
 

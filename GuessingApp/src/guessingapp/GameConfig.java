@@ -3,25 +3,21 @@ package guessingapp;
 import java.util.Random;
 
 /**
- * GAME CONFIGURATION CLASS
- *
- * Responsible for:
- * - Initializing game settings
- * - Generating target number
- * - Displaying rules
+ * Holds all game configuration values.
  */
 public class GameConfig
 {
 
-    private static final int MIN_RANGE = 1;
-    private static final int MAX_RANGE = 100;
-    private static final int MAX_ATTEMPTS = 7;
+    private static final int MIN = 1;
+    private static final int MAX = 100;
+    private static final int MAX_ATTEMPTS = 5;
+    private static final int MAX_HINTS = 2;
 
-    private int targetNumber;
+    private final int targetNumber;
 
-    public GameConfig() {
-        Random random = new Random();
-        targetNumber = random.nextInt(MAX_RANGE - MIN_RANGE + 1) + MIN_RANGE;
+    public GameConfig()
+    {
+        this.targetNumber = new Random().nextInt(MAX - MIN + 1) + MIN;
     }
 
     public int getTargetNumber() {
@@ -32,10 +28,16 @@ public class GameConfig
         return MAX_ATTEMPTS;
     }
 
-    public void showRules() {
-        System.out.println("Guess a number between 1 and 100");
-        System.out.println("You have 7 attempts");
-        System.out.println("Hints will be provided after wrong guesses");
-        System.out.println();
+    public int getMaxHints() {
+        return MAX_HINTS;
+    }
+
+    public void showRules()
+    {
+        System.out.println("📜 Rules:");
+        System.out.println("- Guess a number between 1 and 100");
+        System.out.println("- Maximum attempts: " + MAX_ATTEMPTS);
+        System.out.println("- Maximum hints: " + MAX_HINTS);
+        System.out.println("----------------------------------");
     }
 }

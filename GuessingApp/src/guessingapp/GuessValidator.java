@@ -11,7 +11,8 @@ package guessingapp;
 public class GuessValidator
 {
 
-    public static String validateGuess(int guess, int target) {
+    public static String validateGuess(int guess, int target)
+    {
 
         if (guess == target)
         {
